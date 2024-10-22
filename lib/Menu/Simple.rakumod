@@ -193,9 +193,9 @@ class Menu does Option-group is export {
 
     method validate-selection(--> Bool) {
         self.validated-selection = Nil;
-        my $valid = False;
-        try { $valid = self.selection >= self.options.keys.sort.first && !(self.selection > self.option-count) };
-        return $valid;
+        (try self.selection >= self.options.keys.sort.first
+          && !(self.selection > self.option-count)
+        ) // False
     }
 
     method process-selection() {
