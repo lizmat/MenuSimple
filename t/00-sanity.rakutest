@@ -16,7 +16,7 @@ sub some-sub {
     say 'done!';
 }
 
-sub check-process($menu, $value, $expected) {
+sub check-process($menu, $value, $expected) is test-assertion {
     $menu.selection = $value;
     is $menu.validate-selection, $expected, 'validates or invalidates selection';
 }
